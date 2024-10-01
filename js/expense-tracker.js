@@ -19,7 +19,7 @@ expenseForm.addEventListener('submit', function (event) {
     // Check if we are editing an existing row
     if (editingRow) {
         editingRow.cells[0].textContent = expenseName;
-        editingRow.cells[1].textContent = `$${parseFloat(expenseAmount).toFixed(2)}`;
+        editingRow.cells[1].textContent = parseFloat(expenseAmount).toFixed(2);
         editingRow.cells[2].textContent = expenseCategory.charAt(0).toUpperCase() + expenseCategory.slice(1);
         editingRow.cells[3].textContent = expenseDate;
         editingRow = null; // Reset after editing
@@ -33,7 +33,7 @@ expenseForm.addEventListener('submit', function (event) {
         newRow.appendChild(nameCell);
 
         const amountCell = document.createElement('td');
-        amountCell.textContent = `$${parseFloat(expenseAmount).toFixed(2)}`;
+        amountCell.textContent = parseFloat(expenseAmount).toFixed(2);
         newRow.appendChild(amountCell);
 
         const categoryCell = document.createElement('td');

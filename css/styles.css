@@ -273,7 +273,7 @@ table th {
     color: white;
 }
 
-table td button {
+table td button, .create-btn {
     background-color: #e74c3c;
     color: white;
     border: none;
@@ -331,4 +331,23 @@ h1 {
 .faq-answer p {
     margin: 0;
 }
+/* Modal styles */
+#confirm-modal {
+    position: absolute; /* Position it relative to the nearest positioned ancestor */
+    top: 100%; /* Adjust the position below the form */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center the modal */
+    background-color: #49cae4;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: none; /* Hidden by default */
+    z-index: 1000; /* Ensure it appears on top */
+}
+
+.modal-content {
+    text-align: center;
+}
+
 
