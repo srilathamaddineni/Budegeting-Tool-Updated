@@ -2,6 +2,20 @@ const expenseForm = document.getElementById('expense-form');
 const expenseTableBody = document.querySelector('#expense-table tbody');
 const feedbackMessage = document.getElementById('feedback-message');
 let editingRow = null; 
+// Get the current date and set the min and max date limits
+const currentDate = new Date();
+const currentYear = currentDate.getFullYear();
+const minYear = currentYear - 100;
+const maxYear = currentYear;
+
+// Create the min and max date strings in YYYY-MM-DD format
+const minDate = new Date(minYear, 0, 1).toISOString().split('T')[0]; // January 1 of minYear
+const maxDate = new Date(maxYear, 11, 31).toISOString().split('T')[0]; // December 31 of maxYear
+
+// Set the min and max attributes for the date input
+const dateInput = document.getElementById('expense-date');
+dateInput.setAttribute('min', minDate);
+dateInput.setAttribute('max', maxDate);
 
 
 expenseForm.addEventListener('submit', function (event) {
@@ -15,6 +29,12 @@ expenseForm.addEventListener('submit', function (event) {
         showFeedback('Please fill in all fields!', 'error');
         return;
     }
+    if (expenseDate < minDate || expenseDate > maxDate) {
+        showFeedback('Please enter a date within the last 100 years.', 'error');
+        return;
+    }
+
+    
 
     // Check if we are editing an existing row
     if (editingRow) {
